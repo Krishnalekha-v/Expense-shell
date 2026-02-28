@@ -27,7 +27,7 @@ validate()
     echo -e "$2 is ..$g failed $n" | tee -a $log_file
     exit 1
     else 
-    echo -e "$2 is .. $r success $n" | tee -a $log_file
+    echo -e "$2 is .. $R success $n" | tee -a $log_file
     fi
 }
 check_root
