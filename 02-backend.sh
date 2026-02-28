@@ -48,5 +48,5 @@ echo "user not created..$y creating user $n "
 useradd expense &>>log_file
 validate $? "creating user"
 else
-echo "user is already created ...$R skipping $n"
+echo -e "user is already created ...$R skipping $n"
 fi
