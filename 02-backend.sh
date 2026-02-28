@@ -48,13 +48,13 @@ echo "user not created..$y creating user $n "
 useradd expense &>>log_file
 validate $? "creating user"
 else
-echo -e "user is already created ...$R skipping $n"
+echo -e "user is already created ...$y skipping $n"
 fi
 
 mkdir -p /app
 validate $? "creating /app directory"
 
-curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>log_ile
 validate $? "dounloading backend code"
 
 cd /app
