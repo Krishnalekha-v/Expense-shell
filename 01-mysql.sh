@@ -34,6 +34,8 @@ validate()
     echo -e "$2 is .. $g success $n" | tee -a $log_file
     fi
 }
+check_root
+
 dnf install mysql-server -y &>>$log_file
 validate $? "installing mysql server"
 
