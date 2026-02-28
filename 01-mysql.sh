@@ -44,7 +44,7 @@ validate $? "enabled mysql server"
 
 systemctl start mysqld &>>$log_file
 validate $? "started mysql server"
-mysql -h 172.31.7.208 -u root -pExpenseApp@1 -e "show database ;" &>>$log_file
+mysql -h 172.31.2.202 -u root -pExpenseApp@1 -e "show database ;" &>>$log_file
 if [ $? -ne 0 ]
 then echo "mysql root password is not setup setting now" &>>$log_file
 mysql_secure_installation --set-root-pass ExpenseApp@1
