@@ -50,3 +50,6 @@ validate $? "downloading front end code"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>log_file
 validate $? " Extracting front end code"
+
+systemctl restart nginx &>>log_file
+validate $? "restarted rontend"
