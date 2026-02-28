@@ -50,3 +50,33 @@ validate $? "creating user"
 else
 echo -e "user is already created ...$R skipping $n"
 fi
+
+mkdir -p /app
+validate $? "creating /app directory"
+
+curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+validate $? "dounloading backend code"
+
+cd /app
+rm -rf /app/* #  removing the existing code
+unzip /tmp/backend.zip &>>log_file
+validate $? "extracting the backend file"
+
+npm install &>>log_file
+
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
+#validate the data beore running the backend
+
+dnf install mysql -y &>>log_file
+validate $? "donloading the database"
+
+mysql -h 172.31.2.202 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+systemctl daemon-reload
+validate $? "daemon reloaded"
+
+systemctl start backend
+
+validate $? "backend strted"
+
+systemctl enable backend
+validate $? "enbled backend"
