@@ -38,7 +38,7 @@ validate $? "disabling nodejs"
 dnf module enable nodejs:20 -y &>>log_file
 validate $? "enaabling node js"
 
-dnf instll nodejs -y &>>log_file
+dnf install nodejs -y &>>log_file
 validate $? "installing nodejs"
 
 id expense &>>log_file
